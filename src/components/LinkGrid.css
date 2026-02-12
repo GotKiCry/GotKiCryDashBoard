@@ -1,0 +1,311 @@
+.link-grid {
+    display: grid;
+    /* Fixed column width for stable card sizes */
+    grid-template-columns: repeat(auto-fill, 100px);
+    gap: 32px;
+    /* Increased gap */
+    width: 100%;
+    justify-content: center;
+    /* Center items */
+}
+
+/* ... existing .link-card ... */
+
+.link-icon-vector {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    /* Premium shadow */
+}
+
+.link-icon {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.link-icon-letter {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.link-icon-letter-overlay {
+    position: absolute;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 0;
+}
+
+.link-icon-fallback {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* ... existing .link-card ... */
+
+.link-favicon {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    border-radius: 8px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    transition: opacity 0.3s ease-in-out;
+}
+
+.opacity-0 {
+    opacity: 0;
+}
+
+.opacity-100 {
+    opacity: 1;
+}
+
+
+
+.dragging-overlay {
+    cursor: grabbing;
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    opacity: 1 !important;
+}
+
+/* Ensure hover scale affects the container */
+/* Hover Effect: Lift & Glow */
+.link-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+    /* Glass background on full card */
+    backdrop-filter: blur(12px);
+    /* Blur effect */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Ensure hover scale affects the container */
+.link-card:hover .link-icon {
+    transform: scale(1.1);
+    /* Subtle scale for icon */
+    background: transparent;
+    /* Remove background from icon */
+}
+
+.link-title {
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.8;
+    text-align: center;
+    color: var(--text-main) !important;
+    text-decoration: none !important;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    margin-top: 8px;
+    /* Increased margin */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+    padding: 0 8px;
+    /* Add padding so text doesn't touch edges */
+    transition: opacity 0.3s ease;
+}
+
+.link-card:hover .link-title {
+    opacity: 1;
+    /* Brighten title on hover */
+}
+
+/* Base Card Style */
+/* Base Card Style */
+.link-card {
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+        border 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    padding: 16px;
+    /* Larger padding */
+    box-sizing: border-box;
+}
+
+/* Add New Button Styling */
+.link-card.add-new .link-icon {
+    background: transparent;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.6);
+    box-shadow: none;
+    font-size: 2rem;
+    /* Larger Plus */
+    transition: all 0.3s ease;
+}
+
+.link-card.add-new:hover .link-icon {
+    border-color: rgba(255, 255, 255, 0.8);
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
+    /* Subtle scale */
+}
+
+.link-card.add-new .link-title {
+    opacity: 0.6;
+}
+
+.link-card.add-new:hover .link-title {
+    opacity: 1;
+}
+
+/* Wrapper for positioning delete button and sorting */
+.link-card-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-btn {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.2s ease;
+    font-size: 16px;
+    z-index: 100;
+    transform: scale(0.8);
+}
+
+.link-card-wrapper:hover .delete-btn {
+    opacity: 1;
+    transform: scale(1);
+    top: -8px;
+    right: -8px;
+}
+
+.delete-btn:hover {
+    background: #FF453A;
+    /* iOS destructive red */
+    border-color: #FF453A;
+    transform: scale(1.1) !important;
+}
+
+@media (max-width: 768px) {
+    .link-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .link-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Context Menu */
+.context-menu {
+    position: fixed;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur-lg));
+    -webkit-backdrop-filter: blur(var(--glass-blur-lg));
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 6px;
+    min-width: 140px;
+    z-index: 9999;
+    animation: menu-fade-in 0.1s ease-out;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+@keyframes menu-fade-in {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.context-menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    color: var(--text-main);
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    border: none;
+    text-align: left;
+    width: 100%;
+}
+
+.context-menu-item:hover {
+    background: var(--glass-panel-bg);
+    transform: translateX(2px);
+}
+
+.context-menu-item:active {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(1px) scale(0.98);
+}
