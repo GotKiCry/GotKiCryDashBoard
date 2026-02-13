@@ -9,19 +9,25 @@ This project is a modern, aesthetically pleasing navigation page designed to rep
 
 ## 🛠 Tech Stack
 - **Core Framework**: [React](https://react.dev/) v19
-- **Build Tool**: [Vite](https://vitejs.dev/) v6
+- **Build Tool**: [Vite](https://vitejs.dev/) v7
+- **State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Drag & Drop**: [dnd-kit](https://dndkit.com/)
 - **Styling**: Vanilla CSS (Variables + Flexbox/Grid)
-- **Icons**: [React Icons](https://react-icons.github.io/react-icons/) (Feather Icons)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/)
 - **Package Manager**: NPM
 
 ## ✨ Key Features
 - **Glassmorphism UI**: Uses `backdrop-filter: blur(16px)` and translucent layers for a premium feel.
 - **Smart Search Bar**: Default optimization for **Microsoft Bing** (CN-accessible).
-- **Speed Dial Grid**: High-speed favicon loading via iowen.cn provider.
+- **Speed Dial Grid**: 
+    - High-speed favicon loading via iowen.cn provider.
+    - **Draggable & Sortable**: Customize your layout with drag-and-drop support.
+    - **Context Menu**: Right-click to edit or deeper interactions.
 - **Advanced Weather Widget**: 
     - Auto-geolocates or manual search.
     - Displays min/max temperature range.
     - Real-time updates using Open-Meteo.
+    - **Customizable Settings**: Configure location and display preferences.
 - **Dynamic Bing Background**: 4K resolution, localized for China region (`mkt=zh-CN`).
 - **Responsive Design**: Adapts seamlessly to Desktop, Tablet, and Mobile screens.
 
@@ -31,13 +37,24 @@ GotKiCryDashBoard/
 ├── dist/                   # Production build output
 ├── public/                 # Static assets (images, fonts)
 ├── src/
+│   ├── assets/             # Project assets
 │   ├── components/         # React Components
+│   │   ├── Background.jsx  # Background image handler
 │   │   ├── Clock.jsx       # Time & Date widget
 │   │   ├── Clock.css       # Styles for Clock
-│   │   ├── LinkGrid.jsx    # Speed Dial shortcuts
+│   │   ├── EditShortcutModal.jsx # Shortcut editing modal
+│   │   ├── LinkGrid.jsx    # Speed Dial shortcuts (Draggable)
 │   │   ├── LinkGrid.css    # Styles for LinkGrid
+│   │   ├── Modal.jsx       # Generic Modal component
 │   │   ├── SearchBar.jsx   # Search input component
-│   │   └── SearchBar.css   # Styles for SearchBar
+│   │   ├── SearchBar.css   # Styles for SearchBar
+│   │   ├── TopBar.jsx      # Top navigation/status bar
+│   │   ├── Weather.jsx     # Weather widget
+│   │   ├── Weather.css     # Styles for Weather
+│   │   └── WeatherSettings.jsx # Weather configuration
+│   ├── hooks/              # Custom React Hooks
+│   │   └── useBingWallpaper.js # Hook to fetch Bing wallpaper
+│   ├── store.js            # Zustand Global State Store
 │   ├── App.jsx             # Main layout component
 │   ├── App.css             # Component-specific styles
 │   ├── index.css           # Global styles & CSS Variables

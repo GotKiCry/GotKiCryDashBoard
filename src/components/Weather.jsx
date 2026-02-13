@@ -6,6 +6,7 @@ import {
 import { FiMapPin } from 'react-icons/fi';
 import WeatherSettings from './WeatherSettings';
 import './Weather.css';
+import LiquidGlass from 'liquid-glass-react';
 
 const Weather = () => {
     // Stale localStorage might not have the 'weather' object yet

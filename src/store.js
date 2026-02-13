@@ -42,7 +42,7 @@ export const useAppStore = create(
             })),
         }),
         {
-            name: 'chrome-dash-storage',
+            name: 'dashboard-storage',
         }
     )
 );

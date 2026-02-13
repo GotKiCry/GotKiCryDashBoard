@@ -1,3 +1,29 @@
+.link-grid-container {
+    flex: 0 1 auto;
+    width: 100%;
+    overflow-y: auto;
+    padding: 10px 20px 40px;
+    /* Add padding for visual breathing room and bottom space */
+    min-height: 0;
+
+    /* Scrollbar Styling for this container */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.link-grid-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.link-grid-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.link-grid-container::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+}
+
 .link-grid {
     display: grid;
     /* Fixed column width for stable card sizes */
@@ -7,6 +33,7 @@
     width: 100%;
     justify-content: center;
     /* Center items */
+    padding-bottom: 2rem;
 }
 
 /* ... existing .link-card ... */
@@ -202,6 +229,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    touch-action: none;
+    /* Allow dnd-kit to handle touch events for drag sorting */
 }
 
 .delete-btn {
@@ -242,13 +271,44 @@
 
 @media (max-width: 768px) {
     .link-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fill, 100px);
+        gap: 24px;
     }
 }
 
 @media (max-width: 480px) {
     .link-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fill, 90px);
+        gap: 16px;
+    }
+
+    .link-card {
+        width: 90px;
+        height: 95px;
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    .link-icon,
+    .link-icon-vector {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    .link-icon-letter,
+    .link-icon-letter-overlay {
+        font-size: 1.2rem;
+    }
+
+    .link-title {
+        font-size: 0.75rem;
+        margin-top: 4px;
+        padding: 0 4px;
+    }
+
+    .link-card.add-new .link-icon {
+        font-size: 1.5rem;
     }
 }
 

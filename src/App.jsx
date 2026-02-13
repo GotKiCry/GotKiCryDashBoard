@@ -24,15 +24,19 @@ function App() {
           <Weather />
 
           <div className="glass-panel" style={{
-            padding: '4rem',
+            padding: '2rem',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            gap: '2.5rem',
+            gap: '2rem',
             borderRadius: '24px',
-            width: '60%',
-            height: '40%',
-
+            width: '100%',
+            maxWidth: '1000px',
+            flex: '0 1 auto',
+            maxHeight: '70vh',
+            minHeight: '200px',
+            marginTop: 'auto',
+            marginBottom: 'auto',
           }}>
             <SearchBar />
             <LinkGrid />

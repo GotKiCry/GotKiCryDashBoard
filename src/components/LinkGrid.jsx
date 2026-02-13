@@ -10,6 +10,7 @@ import {
     closestCenter,
     KeyboardSensor,
     PointerSensor,
+    TouchSensor,
     useSensor,
     useSensors,
     DragOverlay,
@@ -192,7 +193,7 @@ const SortableLinkItem = ({ link, onDelete, updateShortcut, onContextMenu }) => 
             >
                 &times;
             </button>
-        </div >
+        </div>
     );
 };
 
@@ -273,6 +274,12 @@ export default function LinkGrid() {
                 distance: 8,
             },
         }),
+        useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 200,
+                tolerance: 5,
+            },
+        }),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         })
@@ -337,12 +344,11 @@ export default function LinkGrid() {
             </DndContext>
 
             {/* Context Menu */}
-            {/* Context Menu */}
             {contextMenu.visible && createPortal(
                 <div
                     className="context-menu"
                     style={{ top: contextMenu.y, left: contextMenu.x }}
-                    onClick={(e) => e.stopPropagation()} // Prevent closing when clicking menu itself
+                    onClick={(e) => e.stopPropagation()}
                     onContextMenu={(e) => e.preventDefault()}
                 >
                     <button className="context-menu-item" onClick={() => { handleOpen(); setContextMenu({ ...contextMenu, visible: false }); }}>

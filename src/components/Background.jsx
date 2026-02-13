@@ -52,6 +52,7 @@ export default function Background() {
             {/* Image Credit */}
             {bingDetail && (
                 <div
+                    className="bing-wallpaper-detail"
                     style={{
                         position: 'fixed',
                         bottom: '10px',
